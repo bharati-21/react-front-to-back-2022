@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #202142;
+  color: #ffffff;
+  font-family: 'Poppins', sans-serif;
+}
+
+.container {
+  max-width: 768px;
+  margin: 0 auto;
+}
+
+.header {
+  background-color: rgba(0, 0, 0, 0.4);
+  color: rgb(255, 106, 149);
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
+  width: 100%;
+}
+
+.feedback-stats {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 2rem;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.card {
+  max-width: 100%;
+  border-radius: 1rem;
+  -webkit-border-radius: 1rem;
+  -moz-border-radius: 1rem;
+  -ms-border-radius: 1rem;
+  -o-border-radius: 1rem;
+  background-color: #ffffff;
+  padding: 2rem;
+  position: relative;
+  margin: 2rem;
+  color: #000000;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+  line-height: 1.6;
+}
+
+.feedback-rating {
+  position: absolute;
+  top: -15px;
+  left: -10px;
+  background-color: rgb(255, 106, 149);
+  color: #ffffff;
+  display: flex;
+  width: 2.5rem;
+  height: 2.5rem;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+
+.icon.close {
+  background-color: #ffffff;
+  outline: none;
+  border: none;
+  align-self: flex-start;
+}
