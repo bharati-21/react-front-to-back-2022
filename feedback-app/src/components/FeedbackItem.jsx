@@ -9,7 +9,7 @@ function FeedbackItem(props) {
             <div className='feedback-rating'>{rating}</div>
            
             <div className='feedback-text'>{text}</div>
-            <button onClick={(e) => props.closeFeedbackItem(id)} className='icon close'>
+            <button onClick={(e) => props.removeFeedback(id)} className='icon close'>
                 <FaTimes color="#000000"/>
             </button>
         </Card>
