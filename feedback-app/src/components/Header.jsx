@@ -1,8 +1,9 @@
+import {Link} from 'react-router-dom'
 function Header() {
     return (
         <header className="header">
             <div className="container">
-                <h2>Feedback UI</h2>
+                <Link to="/"><h2>Feedback UI</h2></Link>
             </div>
         </header>
     )

@@ -10,6 +10,7 @@ body {
   background-color: #202142;
   color: #ffffff;
   font-family: 'Poppins', sans-serif;
+  position: relative;
 }
 
 .container {
@@ -120,6 +121,10 @@ body {
   color: #ffffff;
 }
 
+.active {
+  background-color: rgb(255, 106, 149);
+}
+
 .feedback-form .comment-container {
   width: 100%;
   display: flex;
@@ -192,3 +197,26 @@ body {
   align-self: flex-start;
 }
 
+.about-link {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.about-link a {
+  color: #fff;
+}
+
+.about-link a:hover {
+  color: #ff6a95;
+}
+
+.about h1 {
+  margin-bottom: 20px;
+}
+
+.about p {
+  margin: 10px 0;
+}
