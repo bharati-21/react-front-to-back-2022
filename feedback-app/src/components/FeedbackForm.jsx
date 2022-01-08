@@ -1,6 +1,6 @@
 import React from 'react'
 import Card from './Card'
-import {useState, useContext} from 'react';
+import {useState, useContext, useEffect} from 'react';
 import { FeedbackContext } from '../context/FeedbackContext';
 
 function FeedbackForm() {
@@ -10,7 +10,18 @@ function FeedbackForm() {
     });
 
     const [error, setError] = useState(true);
-    const {addFeedback} = useContext(FeedbackContext);
+    const {addFeedback, feedbackEdit, updateFeedbackItem} = useContext(FeedbackContext);
+
+    useEffect(() => {
+        if(feedbackEdit.edit === true) {
+            setError(false);
+            const {text, id, rating} = feedbackEdit.item;
+            setFormData({
+                reviewComment: text,
+                rating,
+            })
+        }
+    }, [feedbackEdit])
 
     function handleChange(event) {
         const {value, name} = event.target;
@@ -31,10 +42,15 @@ function FeedbackForm() {
                 text: formData.reviewComment,
                 rating: formData.rating
             }
-            addFeedback(newFeedback)
+            if(feedbackEdit.edit) {
+                updateFeedbackItem(feedbackEdit.item.id, newFeedback);
+            }
+            else {
+                addFeedback(newFeedback);
+            }
             setFormData({
                 reviewComment: '',
-                rating: ''
+                rating: '',
             });
         }
         else {
@@ -57,7 +73,7 @@ function FeedbackForm() {
                                 id="rating-1"
                                 value="1" 
                                 onChange={handleChange}
-                                checked={formData.rating === 1}
+                                checked={formData.rating == 1}
                             />
                             <label htmlFor="rating-1">
                                 1
@@ -71,7 +87,7 @@ function FeedbackForm() {
                                 id="rating-2" 
                                 value="2"
                                 onChange={handleChange}
-                                checked={formData.rating === "2"}
+                                checked={formData.rating == 2}
                             />
                             <label htmlFor="rating-2">
                                 2
@@ -85,7 +101,7 @@ function FeedbackForm() {
                                 id="rating-3" 
                                 value="3"
                                 onChange={handleChange}
-                                checked={formData.rating === "3"}    
+                                checked={formData.rating == 3}    
                             />
                             <label htmlFor="rating-3">
                                 3
@@ -99,7 +115,7 @@ function FeedbackForm() {
                                 id="rating-4" 
                                 value="4"
                                 onChange={handleChange}
-                                checked={formData.rating === "4"}
+                                checked={formData.rating == 4}
                             />
                             <label htmlFor="rating-4">
                                 4
@@ -113,7 +129,7 @@ function FeedbackForm() {
                                 id="rating-5" 
                                 value="5"
                                 onChange={handleChange}
-                                checked={formData.rating === "5"}
+                                checked={formData.rating == 5}
                             />
                             <label htmlFor="rating-5">
                                 5
@@ -127,7 +143,7 @@ function FeedbackForm() {
                                 id="rating-6" 
                                 value="6" 
                                 onChange={handleChange}
-                                checked={formData.rating === "6"}
+                                checked={formData.rating == 6}
                             />
                             <label htmlFor="rating-6">
                                 6
@@ -141,7 +157,7 @@ function FeedbackForm() {
                                 id="rating-7" 
                                 value="7"
                                 onChange={handleChange}
-                                checked={formData.rating === "7"}
+                                checked={formData.rating == 7}
                             />
                             <label htmlFor="rating-7">
                                 7
@@ -155,7 +171,7 @@ function FeedbackForm() {
                                 id="rating-8" 
                                 value="8"
                                 onChange={handleChange}
-                                checked={formData.rating === "8"}
+                                checked={formData.rating == 8}
                             />
                             <label htmlFor="rating-8">
                                 8
@@ -169,7 +185,7 @@ function FeedbackForm() {
                                 id="rating-9"
                                 value="9" 
                                 onChange={handleChange}
-                                checked={formData.rating === "9"}
+                                checked={formData.rating == 9}
                             />
                             <label htmlFor="rating-9">
                                 9
@@ -183,7 +199,7 @@ function FeedbackForm() {
                                 id="rating-10" 
                                 value="10"
                                 onChange={handleChange}
-                                checked={formData.rating === "10"}
+                                checked={formData.rating == 10}
                             />
                             <label htmlFor="rating-10">
                                 10

@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import {nanoid} from 'nanoid';
 
 export const FeedbackContext = createContext();
@@ -21,15 +21,23 @@ export default function FeedbackProvider ({children})  {
             text: 'This is feedback item 3',
             rating: 8
         },
-    ])
+    ]);
 
+    const [feedbackEdit, setFeedbackEdit] = useState({
+        item: {},
+        edit: false
+    })
+
+    // Remove feedback
     function removeFeedback(id) {
         if(window.confirm('Are you sure you want to delete this feedback?')) {
             setFeedback(oldFeedback => oldFeedback.filter(data => data.id !== id));
         }
     }
 
-    function addFeedback(newFeedback) {
+
+    // Add feedback to the list
+    function addFeedback(newFeedback, ) {
         setFeedback(oldFeedback => {
             return [...oldFeedback, {
                 id: nanoid(),
@@ -38,9 +46,30 @@ export default function FeedbackProvider ({children})  {
         })
     }
 
-    return <FeedbackContext.Provider value={{
-        feedback, removeFeedback, addFeedback
-    }}>
+    // set item to be updated
+    function editFeedback(item) {
+        setFeedbackEdit({
+            item,
+            edit: true
+        })
+    }
+
+    function updateFeedbackItem(id, item) {
+        setFeedback(oldFeedbackItems => oldFeedbackItems.map(oldFeedback => {
+           return oldFeedback.id === id ? {...item} : oldFeedback;
+        }))
+    }
+
+    return <FeedbackContext.Provider value={
+        {
+            feedback,
+            feedbackEdit,
+            removeFeedback, 
+            addFeedback,
+            editFeedback,
+            updateFeedbackItem
+        }
+    }>
         {children}
     </FeedbackContext.Provider>
 }

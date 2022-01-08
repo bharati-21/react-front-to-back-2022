@@ -1,20 +1,25 @@
 import React, {useContext} from 'react'
 import Card from './Card';
-import {FaTimes} from 'react-icons/fa';
+import {FaTimes, FaEdit} from 'react-icons/fa';
 import { FeedbackContext } from '../context/FeedbackContext';
 
-function FeedbackItem(props) {
-    const {id,text, rating} = props.data;
-    const {removeFeedback} = useContext(FeedbackContext);
+function FeedbackItem({data}) {
+    const {id,text, rating} = data;
+    const {removeFeedback, editFeedback} = useContext(FeedbackContext);
     
     return (
         <Card>
             <div className='feedback-rating'>{rating}</div>
            
             <div className='feedback-text'>{text}</div>
-            <button onClick={(e) => removeFeedback(id)} className='icon close'>
-                <FaTimes color="#000000"/>
-            </button>
+            <div className="icons">
+                <button onClick={(e) => removeFeedback(id)} className='icon close'>
+                    <FaTimes color="purple"/>
+                </button>
+                <button onClick={(e) => editFeedback(data)} className='icon edit'>
+                    <FaEdit color="purple"/>
+                </button>
+            </div>
         </Card>
     )
 }

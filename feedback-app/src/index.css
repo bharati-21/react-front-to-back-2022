@@ -190,11 +190,24 @@ body {
   outline: none;
 }
 
-.icon.close {
+.icons {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon.close, .icon.edit {
   background-color: #ffffff;
   outline: none;
   border: none;
   align-self: flex-start;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.icon.close:hover > *, .icon.edit:hover > *{
+  color: #202142 !important;
 }
 
 .about-link {
