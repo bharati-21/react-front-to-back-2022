@@ -1,14 +1,16 @@
 import React from 'react'
 import Card from './Card'
-import {useState} from 'react';
+import {useState, useContext} from 'react';
+import { FeedbackContext } from '../context/FeedbackContext';
 
-function FeedbackForm({addFeedback}) {
+function FeedbackForm() {
     const [formData, setFormData] = useState({
         reviewComment: '',
         rating: ''
     });
 
     const [error, setError] = useState(true);
+    const {addFeedback} = useContext(FeedbackContext);
 
     function handleChange(event) {
         const {value, name} = event.target;

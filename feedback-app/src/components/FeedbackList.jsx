@@ -1,18 +1,19 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import FeedbackItem from './FeedbackItem';
-import FeedbackStats from './FeedbackStats';
 import {motion, AnimatePresence} from 'framer-motion'
+import {FeedbackContext} from '../context/FeedbackContext';
 
 
-function FeedbackList({feedbackData, removeFeedback}) {
-    console.log(feedbackData);
+function FeedbackList() {
+
+    const {feedback, removeFeedback} = useContext(FeedbackContext); 
+
     return (
         <section className='feedback-list'>
             <article className="container">
-                <FeedbackStats feedbackData={feedbackData}/>
                 <AnimatePresence>
                 {
-                    feedbackData.map(data => {
+                    feedback.map(data => {
                         return <motion.div 
                             key={data.id}
                             initial={{opacity: 0}}
